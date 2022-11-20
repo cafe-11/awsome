@@ -1,0 +1,15 @@
+resource "aws_instance" "webtier" {
+  instance_type = var.instance_type
+  ami           = var.image_id
+  key_name      = var.instance_keypair_name
+  tags = {
+    Name = "webtier"
+  }
+
+  vpc_security_group_ids = [aws_security_group.instance_sg.id]
+  subnet_id              = aws_subnet.public_test_subnet[0].id
+
+  root_block_device {
+    volume_size = var.vol_size
+  }
+}
