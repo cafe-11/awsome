@@ -46,3 +46,4 @@ resource "aws_autoscaling_attachment" "asg_attachment_bar" {
   lb_target_group_arn    = aws_lb_target_group.test-tg.arn
 }
 
+
